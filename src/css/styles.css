@@ -9,46 +9,46 @@
 @import url('./base.css');
 
 body {
-  font-family: sans-serif;
-  padding: 1rem;
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
 .form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .gallery {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 0;
 }
 
 .gallery-item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
+  width: calc(25% - 20px);
+  box-sizing: border-box;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.info {
+  margin-top: 10px;
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #ccc;
-  border-top-color: #2e7dff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
+  display: none;
+  margin-bottom: 20px;
 }
 
-.is-hidden {
+.loader.hidden {
   display: none;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.loader:not(.hidden) {
+  display: block;
 }

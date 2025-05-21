@@ -8,47 +8,120 @@
 @import url('./reset.css');
 @import url('./base.css');
 
+/* Загальні стилі */
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
-.form {
-  margin-bottom: 20px;
-}
-
-.gallery {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
   padding: 0;
 }
 
-.gallery-item {
-  width: calc(25% - 20px);
-  box-sizing: border-box;
+/* Заголовок */
+h1 {
+  color: #2e2f42;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 36px;
 }
 
-.gallery-item img {
+/* Форма пошуку */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-form input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+}
+
+.search-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4e75ff;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-form button:hover {
+  background-color: #6c8cff;
+}
+
+/* Галерея */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photo-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.photo-card:hover {
+  transform: translateY(-5px);
+}
+
+.photo-card img {
   width: 100%;
   height: auto;
   display: block;
 }
 
 .info {
-  margin-top: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #2e2f42;
 }
 
-.loader {
-  display: none;
-  margin-bottom: 20px;
+.info-item {
+  margin-bottom: 10px;
 }
 
-.loader.hidden {
-  display: none;
-}
-
-.loader:not(.hidden) {
+/* Кнопка "Завантажити ще" */
+.load-more {
   display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #4e75ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.load-more:hover {
+  background-color: #6c8cff;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-form input,
+  .search-form button {
+    width: 80%;
+    border-radius: 4px;
+    margin: 5px 0;
+  }
 }

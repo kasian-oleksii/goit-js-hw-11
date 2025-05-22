@@ -8,120 +8,129 @@
 @import url('./reset.css');
 @import url('./base.css');
 
-/* Загальні стилі */
+:root {
+  --primary-color: #4e75ff;
+  --primary-hover: #6c8cff;
+  --input-border: #808080;
+  --input-border-focus: #4e75ff;
+  --font-family: 'Roboto', sans-serif;
+  --danger-color: #ef4040;
+  --light-gray: #f5f5f5;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f8f8f8;
+  font-family: var(--font-family);
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  background-color: white;
+  color: #212121;
 }
 
-/* Заголовок */
-h1 {
-  color: #2e2f42;
-  text-align: center;
-  margin-top: 40px;
-  font-size: 36px;
-}
-
-/* Форма пошуку */
+/* === SEARCH FORM === */
 .search-form {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-bottom: 24px;
 }
 
 .search-form input {
   width: 300px;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
   border-radius: 4px 0 0 4px;
+  outline: none;
   font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+.search-form input:hover {
+  border-color: var(--input-border-focus);
+}
+
+.search-form input:focus {
+  border-color: var(--input-border-focus);
 }
 
 .search-form button {
-  padding: 10px 20px;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: #ffffff;
   border: none;
-  background-color: #4e75ff;
-  color: white;
   border-radius: 0 4px 4px 0;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .search-form button:hover {
-  background-color: #6c8cff;
+  background-color: var(--primary-hover);
 }
 
-/* Галерея */
+/* === GALLERY === */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .photo-card {
-  background-color: white;
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.photo-card:hover {
-  transform: translateY(-5px);
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .photo-card img {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   display: block;
 }
 
 .info {
-  padding: 15px;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px 0;
   font-size: 14px;
-  color: #2e2f42;
+  color: #333;
 }
 
 .info-item {
-  margin-bottom: 10px;
+  text-align: center;
 }
 
-/* Кнопка "Завантажити ще" */
+/* === LOAD MORE BUTTON === */
 .load-more {
   display: block;
-  margin: 30px auto;
-  padding: 10px 20px;
-  background-color: #4e75ff;
+  margin: 32px auto;
+  padding: 10px 24px;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 8px;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .load-more:hover {
-  background-color: #6c8cff;
+  background-color: var(--primary-hover);
 }
 
-/* Адаптивність */
-@media (max-width: 768px) {
-  .search-form {
-    flex-direction: column;
-    align-items: center;
-  }
+/* === LOADING INDICATOR === */
+.loader {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #333;
+}
 
-  .search-form input,
-  .search-form button {
-    width: 80%;
-    border-radius: 4px;
-    margin: 5px 0;
-  }
+/* === ERROR MESSAGE (iziToast wrapper override) === */
+.iziToast.iziToast-theme-light.iziToast-color-red {
+  background: var(--danger-color);
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
 }
